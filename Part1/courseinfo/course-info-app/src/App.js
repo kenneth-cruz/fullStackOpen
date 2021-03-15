@@ -11,12 +11,11 @@ const Header = (props) => {
 
 const Content = (props) => {
 // renders the parts and their number of exercises
-console.log('CONTENT', props.exercises1)
   return (
     <div>
-      <p> <Part part = {props.part1} exercise = {props.exercises1}> </Part> </p>
-      <p> <Part part = {props.part2} exercise = {props.exercises2}> </Part> </p>
-      <p> <Part part = {props.part3} exercise = {props.exercises3}> </Part> </p>
+      <p> <Part part = {props.parts[0].name} exercise = {props.parts[0].exercises}> </Part> </p>
+      <p> <Part part = {props.parts[1].name} exercise = {props.parts[1].exercises}> </Part> </p>
+      <p> <Part part = {props.parts[2].name} exercise = {props.parts[2].exercises}> </Part> </p>
     </div>
   )  
 }
@@ -35,7 +34,7 @@ const Total = (props) => {
 // renders the total number of exercises
 return (
   <div>
-    <p> Number of exercises {props.total}</p>
+    <p> Number of exercises {props.parts[3].total}</p>
   </div>
 )
 }
@@ -54,20 +53,20 @@ const App = () => {
    {
     name: 'State of a component',
     exercises: 14
+  },
+  {
+    total: 31
   }
 ]
-  const total = parts[0].exercises + parts[1].exercises + parts[2].exercises
+  
+
+// const total = parts[0].exercises + parts[1].exercises + parts[2].exercises
   
   return (
     <div>
       <h1> <Header course={course}/> </h1>
-      <p> <Content 
-          part1={parts[0].name} part2={parts[1].name} part3={parts[2].name} 
-          exercises1={parts[0].exercises} exercises2={parts[1].exercises}
-          exercises3={parts[2].exercises} > 
-          </Content>
-      </p>
-      <p> <Total total={total}></Total></p>
+      <p> <Content parts={parts}/></p>
+      <p> <Total parts={parts}></Total></p>
     </div>
   );
 }
